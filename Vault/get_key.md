@@ -24,7 +24,7 @@ func main() {
 		log.Fatalf("Failed to create Vault client: %v", err)
 	}
 
-	client.SetToken("xxxxxxxxxxxxxxxxxxxxxxxxxx") // Replace with your Vault token
+	client.SetToken("xxxxxxxxxxxxxxxxxxxxxxx") // Replace with your Vault token
 
 	// Define the API path to your secret
 	secretPath := "kv/data/Keys"
@@ -38,11 +38,20 @@ func main() {
 	// Extract the WebKey value from the nested data
 	if secret != nil {
 		if data, ok := secret.Data["data"].(map[string]interface{}); ok {
+
+			//retrive all keys
+			fmt.Println("Retrieved all keys and values:")
+			for key, value := range data {
+				fmt.Printf("Key: %s, Value: %v\n", key, value)
+			}
+
+			//retrive specific key
 			if webKey, ok := data["WebKey"].(string); ok {
 				fmt.Printf("Retrieved WebKey: %s\n", webKey)
 			} else {
 				log.Println("WebKey not found or is not a string in the data field")
 			}
+
 		} else {
 			log.Println("Data field missing or in unexpected format")
 		}
