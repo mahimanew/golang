@@ -45,7 +45,7 @@ func main() {
 				fmt.Printf("Key: %s, Value: %v\n", key, value)
 			}
 
-			//retrive specific key
+			//retrive a specific key
 			if webKey, ok := data["WebKey"].(string); ok {
 				fmt.Printf("Retrieved WebKey: %s\n", webKey)
 			} else {
