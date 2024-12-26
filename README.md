@@ -1,3 +1,7 @@
+
+
+## Diagram of flow
+```mermaid
 flowchart TD
     Client["Client sends API request"] --> Gateway["API Gateway"]
     Vault["Vault"] -->|Retrieve API keys securely| Store["API Key Store"]
@@ -30,3 +34,4 @@ flowchart TD
     class Vault vault
     class Store store
     class Log logNode
+```
