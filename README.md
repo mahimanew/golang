@@ -1,10 +1,7 @@
-
-
-## Diagram of flow
-```mermaid
 flowchart TD
     Client["Client sends API request"] --> Gateway["API Gateway"]
-    Store["API Key Store  Vault"] -->|Cache the api keys every 2 minutes| KeyValid
+    Vault["Vault"] -->|Retrieve API keys securely| Store["API Key Store"]
+    Store["API Key Store"] -->|Cache the API keys every 2 minutes| KeyValid
     Gateway --> KeyValid{"API Key Valid?"}
     Gateway --> JWTValid{"JWT Valid?"}
     
@@ -27,8 +24,9 @@ flowchart TD
     JWTValid --- JWTNote
     
     %% Styling
+    classDef vault fill:#4caf50,stroke:#4caf50,color:white
     classDef store fill:#4285f4,stroke:#4285f4,color:white
     classDef logNode fill:#4285f4,stroke:#4285f4,color:white
+    class Vault vault
     class Store store
     class Log logNode
-```
